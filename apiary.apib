@@ -6,7 +6,7 @@ HOST: https://api.dominodatalab.com/
 
 Domino has two types of APIs: **API Endpoints** which let you publish your code as a low-latency web service without any API design experience and the **Domino API** which lets you allow you to interact with your project's files and runs.
 
-## API Endpoints [/v1/{username}/{project_name}/endpoint]
+## Group API Endpoints
 
 API Endpoints help you deploy and operationalize your models as APIs without any web development knowledge
 
@@ -22,7 +22,7 @@ API Endpoints help you deploy and operationalize your models as APIs without any
             X-Domino-Api-Key: YOUR_DOMINO_API_KEY
 
     + Attributes
-        + parameters: [1,2,3] (array, required) An array of objects which directly map to the parameters of the function powering your API endpoint. 
+        + parameters: (array, required) An array of objects which directly map to the parameters of the function powering your API endpoint. 
         
             For example, if your API endpoint is powered by the following function:
             
@@ -47,18 +47,18 @@ API Endpoints help you deploy and operationalize your models as APIs without any
 
     + Attributes
         + release (object)
-            + commitId: `e1dfab96a6c6014767e9561059224a3153cb6de6` (string) - 
-            + file: `predict.R` (string) - 
-            + function: `predictQuality` (string) - 
-            + version: `14` (number) - 
+            + commitId: `e1dfab96a6c6014767e9561059224a3153cb6de6` (string) - the commit your API endpoint is bound to
+            + file: `predict.R` (string) - the file your API endpoint is bound to
+            + function: `predictQuality` (string) - the function your API endpoint is bound to
+            + version: `14` (number) - the version of your API that was used
         + requestId: `NMEOMGVJURWVPOQF` (string)
         + result (object) a JSON Object or Array depending on what your function returns
             + a_random_number: `103` (number)
 
 
-## Project Runs and Files [/v1/projects/{username}/{project_name}]
+## Group Project Runs and Files
 
-These API endpoints allow you to interact with your project's files and runs
+These APIs allow you to interact with your project's files and runs
 
 
 ### List of Runs [GET /v1/projects/{username}/{project_name}/runs]
@@ -155,7 +155,21 @@ Get the contents of a file from the project
 + Parameters
     + username: `nick` (string, required) - The project owner's username
     + project_name: `winequality` (string, required) - The project name
-    + blob_id: `adfjlklasdfhjklah8323hfjkdf` (string, required) - 
+    + blob_id: `adfjlklasdfhjklah8323hfjkdf` (string, required) - The unique ID of the blob
+
++ Response 200
+
+## Group Search
+
+These APIs allow you to interact search your projects, runs, files, and comments
+
+### Search [GET /v1/search?{query,area}]
+
+Execute a search
+
++ Parameters
+    + query: `shiny` (string, required) - The phrase to search
+    + area: `projects` (string, required) - The type of object to search. Valid values are `project`, `run`, `file`, and `comment`
 
 + Response 200
 
