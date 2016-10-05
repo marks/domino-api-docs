@@ -22,7 +22,7 @@ API Endpoints help you deploy and operationalize your models as APIs without any
             X-Domino-Api-Key: YOUR_DOMINO_API_KEY
 
     + Attributes
-        + parameters: (array, required) An array of objects which directly map to the parameters of the function powering your API endpoint. 
+        + parameters: `["trainModel.R", "data/trainingSet.Rdata"]` (array[string], required) An array of objects which directly map to the parameters of the function powering your API endpoint. 
         
             For example, if your API endpoint is powered by the following function:
             
@@ -163,7 +163,7 @@ Get the contents of a file from the project
 
 These APIs allow you to interact search your projects, runs, files, and comments
 
-### Search [GET /v1/search?{query,area}]
+### Search [GET /v1/search{?query,area}]
 
 Execute a search
 
@@ -171,7 +171,7 @@ Execute a search
     + query: `shiny` (string, required) - The phrase to search
     + area: `projects` (string, required) - The type of object to search. Valid values are `project`, `run`, `file`, and `comment`
 
-+ Response 200
++ Response 200 (application/json)
 
 ## Data Structures
 
