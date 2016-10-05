@@ -1,5 +1,5 @@
 aglio \
 	--theme-variables default \
 	-i apiary.apib \
-	-o docs.html \
+	-o index.html \
 	--theme-template triple
