@@ -157,6 +157,12 @@ Get the contents of a file from the project
     + project_name: `winequality` (string, required) - The project name
     + blob_id: `adfjlklasdfhjklah8323hfjkdf` (string, required) - The unique ID of the blob
 
++ Request 
+
+    + Headers
+    
+            X-Domino-Api-Key: YOUR_DOMINO_API_KEY
+
 + Response 200
 
 ## Group Search
@@ -171,7 +177,14 @@ Execute a search
     + query: `shiny` (string, required) - The phrase to search
     + area: `projects` (string, required) - The type of object to search. Valid values are `project`, `run`, `file`, and `comment`
 
++ Request 
+
+    + Headers
+    
+            X-Domino-Api-Key: YOUR_DOMINO_API_KEY
+
 + Response 200 (application/json)
+
 
 ## Data Structures
 
