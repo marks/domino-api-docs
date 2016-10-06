@@ -1,6 +1,6 @@
 echo "Converting apiary.apib to index.html using aglio"
 aglio \
-	--theme-variables default \
+	--theme-variables aglio_styles.less \
 	-i apiary.apib \
 	-o index.html \
 	--theme-template triple
