@@ -1,7 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata|Raleway:200');
 
+/* logo colors */
 @domino-gray: #595e6a;
 @domino-blue: #4f8bd3;
+/* web ui colors */
+@domino-ui-light-blue: #F3F6F9;
+@domino-ui-light-gray: #FBFBFB;
+
 
 /* Page-wide variables */
 @padding: 12px;
@@ -20,7 +25,7 @@
 @background-color: white;
 @text-color: black;
 
-@link-color: #428bca;
+@link-color: #3173CF;
 @right-link-color: @link-color;
 
 @heading-text-color: @text-color;
@@ -32,7 +37,7 @@
 @nav-hover-border-color: @text-color;
 @nav-hover-background-color: bad-color;
 @nav-hover-text-decoration: none;
-@nav-background-color: #fbfbfb;
+@nav-background-color: @domino-ui-light-blue;
 @nav-border-color: #f0f0f0;
 @right-background-color: @domino-gray;
 @right-text-color: @background-color;
@@ -107,7 +112,7 @@
 @patch-border-color: @put-border-color;
 
 /* HTTP POST */
-@post-color: #5cb85c;
+@post-color: #42B236;
 @post-background-color: #dff0d8;
 @post-text-color: contrast(@post-background-color);
 @post-badge-text-color: darken(@post-background-color, 25%);
