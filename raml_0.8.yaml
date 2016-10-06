@@ -1,8 +1,8 @@
 #%RAML 0.8
-title: Domino API
+title: Domino Data Lab APIs
 version: 1.0
 documentation:
-- title: Domino API
+- title: Domino Data Lab APIs
   content: 'TODO: Add a description'
 baseUri: https://api.dominodatalab.com/
 schemas:

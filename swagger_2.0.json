@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "version": "",
-    "title": "Domino API",
+    "title": "Domino Data Lab APIs",
     "description": "TODO: Add a description",
     "license": {
       "name": "MIT",
