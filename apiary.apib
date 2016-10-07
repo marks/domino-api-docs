@@ -157,13 +157,47 @@ Get the contents of a file from the project
     + project_name: `winequality` (string, required) - The project name
     + blob_id: `adfjlklasdfhjklah8323hfjkdf` (string, required) - The unique ID of the blob
 
-+ Request 
++ Request
 
     + Headers
     
             X-Domino-Api-Key: YOUR_DOMINO_API_KEY
 
 + Response 200
+
+### Upload a file [PUT /v1/projects/{username}/{project_name}/{path}]
+ 
+Upload a file to your project
+
++ Parameters
+    + username: `nick` (string, required) - The project owner's username
+    + project_name: `winequality` (string, required) - The project name
+    + path: `data/randomNumbers.rdata` (string, required) - Where you want the file to be saved. (You can include forward slashes to upload files into folders that exist)
+
++ Request
+
+    + Headers
+    
+            X-Domino-Api-Key: YOUR_DOMINO_API_KEY
+            
+    + Body
+    
+            <CONTENTS_OF_YOUR_FILE>
+
++ Response 201 (application/json)
+
+    + Headers
+    
+            Location: https://app.dominodatalab.com/v1/projects/marks/quick-start/blobs/5c28ab880e29953e41b91e351f786a833fbf18a5
+            Transfer-Encoding: chunked
+
+    + Attributes
+        + path: `data/randomNumbers.rdata` (string, required) - Path within the project your file was saved to
+        + lastModified: `1475878612000` (number, required) - Milliseconds epoch time the file was last modified
+        + size: `32690` (number, required) - The size of the file you just uploaded, in bytes
+        + key: `5c28ab880e29953e41b91e351f786a833fbf18a5` (string, required) - The blob ID for the file. Used by the 'Get a file' API
+        + url: `https://app.dominodatalab.com/v1/projects/marks/quick-start/blobs/5c28ab880e29953e41b91e351f786a833fbf18a5` (string, required) - The full URL to the blob (this can be used to re-download the file)
+
 
 ## Group Search
 
