@@ -70,6 +70,9 @@ definitions:
         $ref: '#/definitions/diagnoisticStatistics'
       isCompleted:
         type: boolean
+      hardwareTierId:
+        description: The hardware tier the run exectued on (new in v1.42)
+        type: string
   diagnoisticStatistics:
     title: diagnoisticStatistics
     type: object
