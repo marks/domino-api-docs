@@ -5,6 +5,8 @@ aglio \
 	-o index.html \
 	--theme-template triple
 
+echo "Converting apiary.apib to Swagger 2.0 JSON using apib2swagger"
+apib2swagger -i apiary.apib -o swagger_2.0.json
 
 # echo "Converting apiary.apib to Swagger 2.0 YAML using apitransformer.com"
 # curl \
