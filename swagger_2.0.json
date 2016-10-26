@@ -99,7 +99,7 @@
                             "properties": {
                                 "parameters": {
                                     "type": "array",
-                                    "description": "For example, if your API endpoint is powered by the following function:\n \n\n```python\n    def random_number(start = 10, stop = 100):\n        return random.uniform(start, stop)\n```\n \n\nYou would pass two number objects in to `parameters`. The full JSON body would be like:\n \n\n```\n    {\"parameters\": [20, 200] }\n```\n"
+                                    "description": "For example, if your API endpoint is powered by the following function:\n \n\n```python\n    def random_number(start = 10, stop = 100):\n        return random.uniform(start, stop)\n```\n \n\nYou would pass two number objects in to `parameters`. The full JSON body would be:\n \n\n```\n    {\"parameters\": [20, 200] }\n```\n"
                                 }
                             },
                             "required": [
