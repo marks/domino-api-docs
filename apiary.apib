@@ -22,7 +22,7 @@ API Endpoints help you deploy and operationalize your models as APIs without any
             X-Domino-Api-Key: YOUR_DOMINO_API_KEY
 
     + Attributes
-        + parameters: `["trainModel.R", "data/trainingSet.Rdata"]` (array[string], required) An array of objects which directly map to the parameters of the function powering your API endpoint. 
+        + parameters (array[string], required) An array of objects which directly map to the parameters of the function powering your API endpoint. 
         
             For example, if your API endpoint is powered by the following function:
             
@@ -31,11 +31,15 @@ API Endpoints help you deploy and operationalize your models as APIs without any
                     return random.uniform(start, stop)
             ```
             
-            You would pass two number objects in to `parameters`. The full JSON body would be like:
+            You would pass two number objects in to `parameters`. The full JSON body would be:
             
             ```
                 {"parameters": [20, 200] }
             ```
+            
+    + Body
+    
+            {"parameters": [20, 200] }
 
 + Response 200 (application/json)
 
