@@ -55,10 +55,10 @@ Learn more about API Endpoint and Model Development
 
     + Attributes
         + release (object) - An object of key/value pairs describing the version of your API endpoint that responded to your request
-            + commitId: `e1dfab96a6c6014767e9561059224a3153cb6de6` (string) - the commit your API endpoint is bound to
-            + file: `predict.R` (string) - the file your API endpoint is bound to
-            + function: `predictQuality` (string) - the function your API endpoint is bound to
-            + version: `14` (number) - the version of your API that was used
+            + commitId: `e1dfab96a6c6014767e9561059224a3153cb6de6` (string) - The commit your API endpoint is bound to
+            + file: `predict.R` (string) - The file your API endpoint is bound to
+            + function: `predictQuality` (string) - The function your API endpoint is bound to
+            + version: `14` (number) - The version of your API that was used
         + requestId: `NMEOMGVJURWVPOQF` (string) - A unique request ID assigned to your API request
         + result (object) - The result of the function you bound to your API Endpoint. Will be either a JSON object/dictionary or array depending on what your function returns.
             + a_random_number: `103` (number)
@@ -88,7 +88,31 @@ Get a list of runs
     + Attributes
         + objectType: `list` (string) - The type of object the API returned
         + uri (string) - The URI that responded to your request
-        + data (array[RunStatus]) - Array of run statuses
+        + data (array) - Array of run statuses
+            - (object) # TODO: DRY this up once Aglio supports MSON Data Structures
+                + id: `57dafe43317467e7b0ef5276` (string) - The unique ID for the run
+                + projectId: `54c17e92e4b0bc49e27d9398` (string) - the ID of the project
+                + number: `5` (number) - the auto-increment number associated with the run
+                + startingUserId: `57a28b28961401f240812caf` (string) - the ID of the user who started the run
+                + queued: `1473969731915`  (number) - milliseconds epoch time the run was added to the queue
+                + started: `1473969754283` (number) - milliseconds epoch time the run started executing
+                + completed: `1473969762970` (number) - milliseconds epoch time the run completed running
+                + status: `Succeeded` (string) - the status of the run
+                + commitId: `1c6e8aa47951e39f9a905f0077af9355c35b712b` (string) - the commit hash of the project used to create the run
+                + executor: `us-west-2:i-007942020ce7baeb5` (string)
+                + outputCommitId: `73fe9481fe635bada713246c3c739beefa424e8c` (string) - the commit hash of the project post-run (look at files with this hash for the results)
+                + title: `Run with great R^2 of 1!` (string) - title of the run, if it was renamed
+                + isArchived: `false` (boolean) - boolean denoting if the run was archived (hidden from the web interface)
+                + postProcessedTimestamp: `1473969767822` (number) -  milliseconds epoch time the run finished processing (this happens after the run has completed and includes saving the results back to the main project repo)
+                + diagnoisticStatistics (object)
+                    + isError: `false` (boolean)
+                    + data (array)
+                        - (object)
+                            + key: `R^2` (string): 
+                            + value: `1.000`
+                + isCompleted: `true` (boolean)
+                + hardwareTierId: `gpu` (string) - The hardware tier the run exectued on (new in v1.42)
+
 
 ### Start Run [POST /v1/projects/{username}/{project_name}/runs]
 
@@ -107,10 +131,10 @@ Start a run of a given script or command
                     ["model.py", "dataset", "--sample", "2000"]
             ```
         
-        + isDirect: `false` (boolean, required) - a direct command is interpretted as a shell command; Domino doesn't try to infer a program to match your file type
-        + title: `This one should work!` (string) - an optional title for your run
-        + tier: `gpu` (string) - name of the hardware tier to use
-        + commitId: `1c6e8aa47951e39f9a905f0077af9355c35b712b` (string) - revision at which to start the run
+        + isDirect: `false` (boolean, required) - A direct command is interpretted as a shell command; Domino doesn't try to infer a program to match your file type
+        + title: `This one should work!` (string) - An optional title for your run
+        + tier: `gpu` (string) - Identifier of the hardware tier to use
+        + commitId: `1c6e8aa47951e39f9a905f0077af9355c35b712b` (string) - Tevision at which to start the run
         + publishApiEndpoint: `false` (boolean) - If true, the results of a successful run will be deployed to the project's active API Endpoint, if one exists 
 
     + Headers
@@ -139,7 +163,30 @@ Get the status of a run
             X-Domino-Api-Key: YOUR_DOMINO_API_KEY
         
 + Response 200 (application/json)
-    + Attributes (RunStatus)
+
+        - (object) # TODO: DRY this up once Aglio supports MSON Data Structures
+            + id: `57dafe43317467e7b0ef5276` (string) - The unique ID for the run
+            + projectId: `54c17e92e4b0bc49e27d9398` (string) - the ID of the project
+            + number: `5` (number) - the auto-increment number associated with the run
+            + startingUserId: `57a28b28961401f240812caf` (string) - the ID of the user who started the run
+            + queued: `1473969731915`  (number) - milliseconds epoch time the run was added to the queue
+            + started: `1473969754283` (number) - milliseconds epoch time the run started executing
+            + completed: `1473969762970` (number) - milliseconds epoch time the run completed running
+            + status: `Succeeded` (string) - the status of the run
+            + commitId: `1c6e8aa47951e39f9a905f0077af9355c35b712b` (string) - the commit hash of the project used to create the run
+            + executor: `us-west-2:i-007942020ce7baeb5` (string)
+            + outputCommitId: `73fe9481fe635bada713246c3c739beefa424e8c` (string) - the commit hash of the project post-run (look at files with this hash for the results)
+            + title: `Run with great R^2 of 1!` (string) - title of the run, if it was renamed
+            + isArchived: `false` (boolean) - boolean denoting if the run was archived (hidden from the web interface)
+            + postProcessedTimestamp: `1473969767822` (number) -  milliseconds epoch time the run finished processing (this happens after the run has completed and includes saving the results back to the main project repo)
+            + diagnoisticStatistics (object)
+                + isError: `false` (boolean)
+                + data (array)
+                    - (object)
+                        + key: `R^2` (string): 
+                        + value: `1.000`
+            + isCompleted: `true` (boolean)
+            + hardwareTierId: `gpu` (string) - The hardware tier the run exectued on (new in v1.42)
 
 ### List files [GET /v1/projects/{username}/{project_name}/files/{commit_id}/{path}]
 
@@ -227,32 +274,3 @@ Execute a search
             X-Domino-Api-Key: YOUR_DOMINO_API_KEY
 
 + Response 200 (application/json)
-
-
-## Data Structures
-
-### RunStatus (object)
-+ id: `57dafe43317467e7b0ef5276` (string) - The unique ID for the run
-+ projectId: `54c17e92e4b0bc49e27d9398` (string) - the ID of the project
-+ number: `5` (number) - the auto-increment number associated with the run
-+ startingUserId: `57a28b28961401f240812caf` (string) - the ID of the user who started the run
-+ queued: `1473969731915`  (number) - milliseconds epoch time the run was added to the queue
-+ started: `1473969754283` (number) - milliseconds epoch time the run started executing
-+ completed: `1473969762970` (number) - milliseconds epoch time the run completed running
-+ status: `Succeeded` (string) - the status of the run
-+ commitId: `1c6e8aa47951e39f9a905f0077af9355c35b712b` (string) - the commit hash of the project used to create the run
-+ executor: `us-west-2:i-007942020ce7baeb5` (string)
-+ outputCommitId: `73fe9481fe635bada713246c3c739beefa424e8c` (string) - the commit hash of the project post-run (look at files with this hash for the results)
-+ title: `Run with great R^2 of 1!` (string) - title of the run, if it was renamed
-+ isArchived: `false` (boolean) - boolean denoting if the run was archived (hidden from the web interface)
-+ postProcessedTimestamp: `1473969767822` (number) -  milliseconds epoch time the run finished processing (this happens after the run has completed and includes saving the results back to the main project repo)
-+ diagnoisticStatistics (object)
-    + isError: `false` (boolean)
-    + data (array)
-        + (DiagnosticStatistic)
-+ isCompleted: `true` (boolean)
-+ hardwareTierId: `gpu` (string) - The hardware tier the run exectued on (new in v1.42)
-
-### DiagnosticStatistic (object)
-+ key: `R^2` (string): 
-+ value: `1.000`
