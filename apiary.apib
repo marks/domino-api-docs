@@ -35,12 +35,14 @@ Learn more about API Endpoint and Model Development
                   return random.uniform(start, stop)
             ```
             
-            You would pass two number objects in to `parameters`, for example: `{"parameters": [20, 200] }`
+            You would pass two number objects in to `parameters`, for example:
             
-
+            ```
+                {"parameters": [20, 200] }
+            ```
             
     + Body
-    
+
             {"parameters": [20, 200] }
 
 + Response 200 (application/json)
@@ -99,11 +101,12 @@ Start a run of a given script or command
 + Request (application/json)
 
     + Attributes
-        + command (array, required) - Array of strings making up your command. For example: `["model.py","dataset","--sample","2000"]`
-            + `"model.py"`
-            + `"dataset"`
-            + `"--sample"`
-            + `"2000"`
+        + command (array, required) - Array of strings making up your command. For example:
+        
+            ```python
+                    ["model.py", "dataset", "--sample", "2000"]
+            ```
+        
         + isDirect: `false` (boolean, required) - a direct command is interpretted as a shell command; Domino doesn't try to infer a program to match your file type
         + title: `This one should work!` (string) - an optional title for your run
         + tier: `gpu` (string) - name of the hardware tier to use
