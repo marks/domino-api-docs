@@ -54,13 +54,13 @@ When the endpoint is published, Domino first runs the script containing the func
             Domino-Serialization-Time: 2
 
     + Attributes
-        + release (object)
+        + release (object) - An object of key/value pairs describing the version of your API endpoint that responded to your request
             + commitId: `e1dfab96a6c6014767e9561059224a3153cb6de6` (string) - the commit your API endpoint is bound to
             + file: `predict.R` (string) - the file your API endpoint is bound to
             + function: `predictQuality` (string) - the function your API endpoint is bound to
             + version: `14` (number) - the version of your API that was used
-        + requestId: `NMEOMGVJURWVPOQF` (string)
-        + result (object) a JSON Object or Array depending on what your function returns
+        + requestId: `NMEOMGVJURWVPOQF` (string) - A unique request ID assigned to your API request
+        + result (object) - The result of the function you bound to your API Endpoint. Will be either a JSON object/dictionary or array depending on what your function returns.
             + a_random_number: `103` (number)
 
 
@@ -86,8 +86,8 @@ Get a list of runs
 + Response 200 (application/json)
 
     + Attributes
-        + objectType: `list` (string)
-        + uri (string)
+        + objectType: `list` (string) - The type of object the API returned
+        + uri (string) - The URI that responded to your request
         + data (array[RunStatus]) - Array of run statuses
 
 ### Start Run [POST /v1/projects/{username}/{project_name}/runs]
