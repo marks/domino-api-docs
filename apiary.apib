@@ -12,9 +12,9 @@ Domino has two types of APIs: **API Endpoints** which let you publish your code 
 
 ### Your awesome model [POST /v1/{username}/{project_name}/endpoint]
 
-Your API Endpoint is a wrapper on top of a function in your Domino-hosted code. The arguments to the API are the arguments to your function; the response from the API includes the return value from your function. Typically this function will make a prediction or classification given some input.
+Your API Endpoint is a wrapper on top of a function in your Domino-hosted code. The arguments to the API are the arguments to your function; the response from the API includes the return value from your function in the `result` object.
 
-When the endpoint is published, Domino first runs the script containing the function. The process then waits for input (so any objects or functions from the script remain available in-memory). Each call to the endpoint runs the function within this same process. Because the script is only sourced once — at publish time — any more expensive initialization can happen up front, rather than happening on each call.
+Learn more about API Endpoint and Model Development
 
 + Parameters
     + username: `nick` (string, required) - The project owner's username
@@ -26,7 +26,7 @@ When the endpoint is published, Domino first runs the script containing the func
             X-Domino-Api-Key: YOUR_DOMINO_API_KEY
 
     + Attributes
-        + parameters (array[string], required) An array of objects which directly map to the parameters of the function powering your API endpoint. 
+        + parameters (array[string], required) - An array of objects which directly map to the parameters of the function powering your API endpoint. 
         
             For example, if your API endpoint is powered by the following function:
             
