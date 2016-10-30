@@ -1,10 +1,9 @@
 echo "Converting apiary.apib to index.html using aglio"
-aglio \
+NOCACHE=1 BENCHMARK=1 aglio \
 	--theme-variables aglio_overrides/aglio_styles.less \
+  --theme-template aglio_overrides/triple.jade \
 	-i apiary.apib \
-	-o index.html \
-	--theme-template triple \
-  --theme-template aglio_overrides/index.jade
+	-o index.html
 
 echo "Converting apiary.apib to Swagger 2.0 JSON using apib2swagger"
 apib2swagger -i apiary.apib -o swagger_2.0.json
