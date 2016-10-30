@@ -53,10 +53,12 @@
                                             "type": "number",
                                             "description": "the version of your API that was used"
                                         }
-                                    }
+                                    },
+                                    "description": "An object of key/value pairs describing the version of your API endpoint that responded to your request"
                                 },
                                 "requestId": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "description": "A unique request ID assigned to your API request"
                                 },
                                 "result": {
                                     "type": "object",
@@ -64,7 +66,8 @@
                                         "a_random_number": {
                                             "type": "number"
                                         }
-                                    }
+                                    },
+                                    "description": "The result of the function you bound to your API Endpoint. Will be either a JSON object/dictionary or array depending on what your function returns."
                                 }
                             }
                         }
@@ -158,10 +161,12 @@
                             "type": "object",
                             "properties": {
                                 "objectType": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "description": "The type of object the API returned"
                                 },
                                 "uri": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "description": "The URI that responded to your request"
                                 },
                                 "data": {
                                     "type": "array",

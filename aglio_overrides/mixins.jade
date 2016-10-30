@@ -66,7 +66,7 @@ mixin Parameters(params)
     //- Draw a definition list of parameter names, types, defaults,
     //- examples and descriptions.
     .title
-        strong URI Parameters
+        = "URI Parameters"
         .collapse-button.show
             span.close Hide
             span.open Show
@@ -107,19 +107,18 @@ mixin Constraints(name, schema)
 mixin SchemaAsList(title, schema)
     //- modeled closely after Parameters
     .title
-        strong= title
+        = title
         .collapse-button.show
             span.close Hide
             span.open Show
     .collapse-content
         dl.inner: each properties, name in schema.properties || []
-            - console.log(properties)
             dt= name
             dd
                 code= properties.type || 'string'
                 | &nbsp;
                 if properties.description
-                    = properties.description
+                    != self.markdown(properties.description)
 
 mixin RequestResponse(title, request, collapse, showSchema)
     .title
@@ -307,17 +306,17 @@ mixin ContentTriple()
 
                         //- URI Parameters
                         if action.parameters.length
-                            hr
+                            hr.params
                             +Parameters(action.parameters)
                         //- Request Body Attributes
                         if(action.examples[0].requests[0].schema)
-                            hr
+                            hr.params
                             - var schema = JSON.parse(action.examples[0].requests[0].schema)
                             +SchemaAsList("Request Body Attributes",schema)
                         //- Response Body Attributes
                         if(action.examples[0].responses[0].schema)
-                            hr
+                            hr.params
                             - var schema = JSON.parse(action.examples[0].responses[0].schema)
                             +SchemaAsList("Response Body Attributes",schema)
-
+                        br
                 hr.split
