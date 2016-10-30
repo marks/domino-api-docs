@@ -3,14 +3,18 @@ HOST: https://api.dominodatalab.com/
 
 # Domino Data Lab APIs
 
- 
+
 Domino has two types of APIs: **API Endpoints** which let you publish your code as a low-latency web service without any API design experience and the **Domino API** which lets you allow you to interact with your project's files and runs.
 
 ## Group API Endpoints
 
-API Endpoints help you deploy and operationalize your models as APIs without any web development knowledge
+[API Endpoints](http://support.dominodatalab.com/hc/en-us/articles/204173149-API-Endpoints-Model-Deployment) help you deploy and operationalize your models as APIs without any web development knowledge.
 
 ### Your awesome model [POST /v1/{username}/{project_name}/endpoint]
+
+Your API Endpoint is a wrapper on top of a function in your Domino-hosted code. The arguments to the API are the arguments to your function; the response from the API includes the return value from your function. Typically this function will make a prediction or classification given some input.
+
+When the endpoint is published, Domino first runs the script containing the function. The process then waits for input (so any objects or functions from the script remain available in-memory). Each call to the endpoint runs the function within this same process. Because the script is only sourced once — at publish time — any more expensive initialization can happen up front, rather than happening on each call.
 
 + Parameters
     + username: `nick` (string, required) - The project owner's username
@@ -88,7 +92,7 @@ Get a list of runs
 
 ### Start Run [POST /v1/projects/{username}/{project_name}/runs]
 
-Start a run of a given script or command 
+Start a run of a given script or command
 
 + Parameters
     + username: `nick` (string, required) - The project owner's username
