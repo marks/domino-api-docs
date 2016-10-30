@@ -283,7 +283,7 @@ mixin ContentTriple()
                                 each example in action.examples
                                     each request in example.requests
                                         .tab
-                                            +RequestResponseBody(request, false, true)
+                                            +RequestResponseBody(request, false, true, true)
                                             .tabs
                                                 .example-names
                                                     span Responses
@@ -291,7 +291,7 @@ mixin ContentTriple()
                                                         span.tab-button= response.name
                                                 each response in example.responses
                                                     .tab
-                                                        +RequestResponseBody(response, false, true)
+                                                        +RequestResponseBody(response, false, true, true)
                             else
                                 each example in action.examples
                                     .tabs
