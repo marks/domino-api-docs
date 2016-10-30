@@ -71,7 +71,7 @@
                     }
                 },
                 "summary": "Your awesome model",
-                "description": "",
+                "description": "Your API Endpoint is a wrapper on top of a function in your Domino-hosted code. The arguments to the API are the arguments to your function; the response from the API includes the return value from your function. Typically this function will make a prediction or classification given some input.\n\nWhen the endpoint is published, Domino first runs the script containing the function. The process then waits for input (so any objects or functions from the script remain available in-memory). Each call to the endpoint runs the function within this same process. Because the script is only sourced once — at publish time — any more expensive initialization can happen up front, rather than happening on each call.\n\n",
                 "tags": [
                     "API Endpoints"
                 ],
@@ -224,7 +224,7 @@
                     }
                 },
                 "summary": "Start Run",
-                "description": "Start a run of a given script or command \n\n",
+                "description": "Start a run of a given script or command\n\n",
                 "tags": [
                     "Project Runs and Files"
                 ],
